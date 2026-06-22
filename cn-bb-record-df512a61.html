@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bb体育 · 轻量导航介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fbe9d7 0%, #f3d5b5 50%, #edc9a0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.2rem 3rem;
+            color: #3e2e24;
+            line-height: 1.7;
+        }
+
+        .page-wrap {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 248, 240, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 0.7rem 1.8rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 6px 14px rgba(160, 100, 60, 0.08);
+        }
+
+        .top-nav .brand {
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 0.02em;
+            color: #6d4c34;
+            background: #f0dfcd;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+        }
+
+        .top-nav .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .top-nav .nav-links a {
+            text-decoration: none;
+            color: #4f392a;
+            padding: 0.3rem 0.2rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .top-nav .nav-links a:hover {
+            border-bottom-color: #b48a65;
+        }
+
+        /* 卡片通用 */
+        .card {
+            background: #fffcf9;
+            border-radius: 36px;
+            padding: 2.2rem 2.5rem;
+            box-shadow: 0 12px 28px rgba(130, 80, 50, 0.06);
+            margin-bottom: 2.2rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 16px 36px rgba(120, 70, 40, 0.10);
+        }
+
+        /* hero 区域 */
+        .hero {
+            text-align: center;
+            padding: 2.8rem 1.5rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 450;
+            color: #4b3425;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #6b5543;
+            max-width: 520px;
+            margin: 0.5rem auto 1.2rem;
+        }
+
+        .hero .intro-text {
+            max-width: 680px;
+            margin: 0 auto;
+            font-size: 1rem;
+            color: #4c3b2e;
+        }
+
+        .hero .intro-text a {
+            color: #7b5a3e;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1.5px;
+            text-decoration-color: #c9ab8f;
+            font-weight: 500;
+        }
+
+        .hero .intro-text a:hover {
+            color: #4f3321;
+            text-decoration-color: #9c7a5b;
+        }
+
+        /* 三个场景模块 */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .scene-card {
+            background: #fffcf9;
+            border-radius: 36px;
+            padding: 2rem 1.6rem 2rem;
+            box-shadow: 0 12px 28px rgba(130, 80, 50, 0.06);
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 32px rgba(100, 60, 30, 0.08);
+        }
+
+        .scene-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.9rem;
+            color: #4d3627;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .scene-card h3::before {
+            content: "·";
+            font-size: 2rem;
+            color: #b68b6b;
+            line-height: 1;
+            margin-right: 0.2rem;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #4b3b2f;
+        }
+
+        .scene-card .small-link {
+            display: inline-block;
+            margin-top: 0.7rem;
+            color: #7b5a3e;
+            border: 1px solid #dac1ad;
+            border-radius: 30px;
+            padding: 0.25rem 1rem;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .scene-card .small-link:hover {
+            background: #efe6db;
+            border-color: #b48a6a;
+        }
+
+        /* 常见说明 / FAQ 摘要 */
+        .faq-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px dashed #ead9ca;
+            padding-bottom: 1rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-item h4 {
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: #3f2d1f;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+            color: #4c3b2e;
+        }
+
+        .faq-item a {
+            color: #7b5a3e;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #c9ab8f;
+        }
+
+        .faq-item a:hover {
+            color: #3f2b1b;
+        }
+
+        /* 版权/脚注 */
+        .footer-note {
+            text-align: center;
+            margin-top: 2rem;
+            color: #7c6857;
+            font-size: 0.9rem;
+            border-top: 1px solid #e6d4c2;
+            padding-top: 1.8rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 860px) {
+            .scenes-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 0.8rem 2rem;
+            }
+
+            .top-nav {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: center;
+                padding: 0.8rem 1.2rem;
+            }
+
+            .top-nav .nav-links {
+                gap: 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 1.6rem 1.2rem;
+            }
+
+            .scenes-grid {
+                grid-template-columns: 1fr;
+                gap: 1.4rem;
+            }
+
+            .scene-card {
+                padding: 1.6rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <span class="brand">bb体育·简览</span>
+        <div class="nav-links">
+            <a href="#">日常</a>
+            <a href="#">对照</a>
+            <a href="#">延伸</a>
+        </div>
+    </nav>
+
+    <!-- Hero + 核心介绍 -->
+    <div class="card hero">
+        <h1>bb体育</h1>
+        <div class="sub">查询 · 对照 · 延伸阅读</div>
+        <div class="intro-text">
+            <p>关于体育信息与赛事资料的日常整理，这里是一个轻量的导航式页面。如果你感兴趣，可以前往 <a href="https://cn-bb-sports.com">bb体育</a> 了解更系统的内容。通常我们从一场比赛或一组数据开始，慢慢延伸到赛事背景、历史对照和日常观察——这些模块试图呈现那种自然的阅读节奏。</p>
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes-grid">
+        <div class="scene-card">
+            <h3>日常查询</h3>
+            <p>快速查看近期赛程、球队状态与基础数据。适合赛前简单翻阅，不做深度分析，只求一目了然。页面结构以列表和卡片为主，减少多余跳转。</p>
+            <a class="small-link" href="https://cn-bb-sports.com">bb体育</a>
+        </div>
+        <div class="scene-card">
+            <h3>对照阅读</h3>
+            <p>将不同赛季、不同联赛的同类数据放在一起，方便横向比较。比如主客场胜率、场均得分变化、交锋记录等。适合想自己判断、不依赖结论的读者。</p>
+            <a class="small-link" href="https://cn-bb-sports.com">bb体育</a>
+        </div>
+        <div class="scene-card">
+            <h3>延伸浏览</h3>
+            <p>从某支球队或某位球员出发，顺藤摸瓜看到更多相关赛事、历史赛季与战术笔记。没有算法推荐，只有结构化的信息链接，适合安静地探索。</p>
+            <a class="small-link" href="https://cn-bb-sports.com">bb体育</a>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="card">
+        <h2 style="font-weight: 450; font-size: 1.3rem; color: #4d3627; margin-bottom: 1.2rem;">常见说明</h2>
+        <div class="faq-summary">
+            <div class="faq-item">
+                <h4>这里的数据更新节奏？</h4>
+                <p>常规赛事信息保持每日同步，历史对照数据按周或月整合。部分深度内容来自公开资料整理，具体更新时间可留意页面标注。你也可以在 <a href="https://cn-bb-sports.com">bb体育</a> 看到更详细的更新日志。</p>
+            </div>
+            <div class="faq-item">
+                <h4>如何理解“对照”模块？</h4>
+                <p>对照不是结论，而是并置。比如将两支球队近五场的攻防数据放在同一张表里，由读者自己观察趋势。我们尽量保留原始数值，不做加权或归一。</p>
+            </div>
+            <div class="faq-item">
+                <h4>延伸阅读的素材来源？</h4>
+                <p>主要基于赛事官网、联赛公开数据以及球队历史档案。每篇延伸笔记都附有参考来源链接，方便回溯与查证。如果有疑问，欢迎通过 <a href="https://cn-bb-sports.com">bb体育</a> 相关页面留言。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 一个小提示（自然收束） -->
+    <div style="background: #f5ede5; border-radius: 24px; padding: 1.1rem 1.8rem; margin-bottom: 1.2rem; font-size: 0.95rem; color: #4b3b2f;">
+        <span style="display: inline-block; background: #dcc9b6; border-radius: 30px; padding: 0.1rem 0.9rem; font-size: 0.8rem; margin-right: 0.6rem; letter-spacing: 0.02em;">提示</span>
+        日常浏览时不妨从自己最熟悉的联赛或队伍切入，逐渐扩展到对照与延伸部分，这样信息之间的关联会更自然。
+    </div>
+
+    <!-- footer -->
+    <div class="footer-note">
+        bb体育 · 轻量导航页 · 仅供日常参考
+    </div>
+</div>
+</body>
+</html>
