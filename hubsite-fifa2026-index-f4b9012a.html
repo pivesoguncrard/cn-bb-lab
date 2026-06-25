@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯指南 · hubsite-fifa2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f4f6;
+            color: #1e2936;
+            line-height: 1.6;
+            padding: 28px 16px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* hero 区 */
+        .hero {
+            background: linear-gradient(145deg, #ffffff, #f9fafb);
+            border-radius: 36px;
+            padding: 48px 40px 40px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0,0,0,0.02);
+            border: 1px solid #e9edf2;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+            color: #0b1e2f;
+        }
+        .hero .sub {
+            font-size: 1.2rem;
+            color: #4b5b6b;
+            margin-top: 6px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: #dce3eb;
+            color: #1d344b;
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            border: 1px solid #ccd7e4;
+        }
+
+        /* 通用卡片 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin: 48px 0;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 28px 24px 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02), 0 6px 14px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8ef;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04), 0 0 0 1px #dce3eb;
+        }
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+            color: #0f293f;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .card p, .card li {
+            color: #33485d;
+            font-size: 0.97rem;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .card ul li {
+            padding: 6px 0 6px 20px;
+            position: relative;
+        }
+        .card ul li::before {
+            content: "·";
+            position: absolute;
+            left: 4px;
+            color: #8aa1b8;
+            font-weight: bold;
+        }
+
+        /* 说明区 */
+        .explain {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 36px 32px;
+            border: 1px solid #e2e8ef;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            margin: 40px 0;
+        }
+        .explain h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #0f293f;
+        }
+        .explain p {
+            margin-bottom: 16px;
+            color: #2a4053;
+        }
+        .explain .highlight {
+            background: #f0f4f9;
+            padding: 18px 20px;
+            border-radius: 20px;
+            border-left: 4px solid #6f8aa8;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* FAQ 摘要 */
+        .faq-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin: 48px 0 32px;
+        }
+        .faq-item {
+            background: #ffffff;
+            padding: 20px 22px;
+            border-radius: 24px;
+            border: 1px solid #e2e8ef;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.01);
+        }
+        .faq-item .q {
+            font-weight: 500;
+            color: #0b1e2f;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+        .faq-item .a {
+            color: #465d71;
+            font-size: 0.92rem;
+        }
+
+        /* 底部链接 */
+        .bottom-link {
+            text-align: center;
+            margin-top: 56px;
+            padding: 32px 0 16px;
+            border-top: 1px solid #dbe2ea;
+        }
+        .bottom-link p {
+            margin-bottom: 8px;
+            color: #486076;
+            font-size: 0.95rem;
+        }
+        .bottom-link a {
+            color: #1f4d7a;
+            text-decoration: none;
+            border-bottom: 1px dashed #b3c7db;
+            font-weight: 500;
+        }
+        .bottom-link a:hover {
+            border-bottom-style: solid;
+            color: #0a3252;
+        }
+
+        .footnote {
+            color: #7a8f9f;
+            font-size: 0.85rem;
+            margin-top: 18px;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            body { padding: 16px 12px; }
+            .hero { padding: 36px 20px 32px; }
+            .hero h1 { font-size: 2rem; }
+            .card { padding: 22px 18px; }
+            .explain { padding: 28px 20px; }
+        }
+        @media (min-width: 900px) {
+            .hero { padding: 60px 48px 48px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- hero 区 -->
+    <div class="hero">
+        <h1>⚽ 关于世界杯 · 一点说明</h1>
+        <div class="sub">hubsite-fifa2026 是一个围绕赛事信息整理的站点，希望帮你更轻松地了解2026年世界杯的赛程、队伍与背景。</div>
+        <div class="badge">非官方 · 信息聚合 · 仅供交流</div>
+    </div>
+
+    <!-- 优势区 / 特点 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>📋 清晰赛事结构</h3>
+            <p>从小组赛到淘汰赛，我们用简洁的方式整理各阶段时间线、分组与场地信息。不需要到处翻找，一个页面就能看到主要脉络。</p>
+        </div>
+        <div class="card">
+            <h3>🌍 多队数据参考</h3>
+            <p>汇集了参赛球队的过往战绩、晋级之路以及核心球员名单，适合赛前快速查阅。数据来源于公开资料，并持续校正。</p>
+        </div>
+        <div class="card">
+            <h3>📆 赛程与提醒</h3>
+            <p>按比赛日列出对阵表，并附上时区对照，方便规划观赛时间。部分页面还提供订阅日历的说明链接（需自行配置）。</p>
+        </div>
+    </div>
+
+    <!-- 说明区：站点介绍与可信说明 -->
+    <div class="explain">
+        <h2>关于这个站点，以及我们想说的</h2>
+        <p>
+            <strong>hubsite-fifa2026</strong> 是一个由爱好者维护的信息整合页面，并非国际足联或任何官方机构的官方网站。
+            我们尽力收集、核对并呈现与 <a href="https://hubsite-fifa2026.com" style="color:#1f4d7a;text-decoration:underline;">世界杯</a> 相关的公开信息，
+            包括赛程、参赛队伍、场馆介绍和历史数据，希望能为关注2026年世界杯的朋友提供一个相对便利的参考入口。
+        </p>
+        <p>
+            站内所有内容均基于可靠来源（如官方公告、权威媒体、维基数据等）进行汇编，但我们无法保证每一条信息都百分之百实时准确。
+            如果你发现任何错误或遗漏，欢迎通过页面反馈渠道告诉我们，我们会尽快核实并修正。
+        </p>
+        <div class="highlight">
+            <strong>📌 可信说明</strong> · 本站不收集用户隐私，不设置付费内容，不嵌入第三方追踪脚本。所有链接均指向公开资源。
+            我们反对夸大宣传，也不做任何形式的诱导点击。请以国际足联官方发布为准，本站仅作为辅助参考。
+        </div>
+    </div>
+
+    <!-- FAQ 摘要（三个常见疑问） -->
+    <div class="faq-summary">
+        <div class="faq-item">
+            <div class="q">❓ 2026世界杯在哪几个国家举办？</div>
+            <div class="a">美国、加拿大、墨西哥联合举办，共16个城市。本站有专门的场馆页面整理了各体育场容量与举办场次。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">❓ 比赛时间大致是什么时候？</div>
+            <div class="a">2026年6月至7月，具体开赛日期待官方最终确认。赛程页面会根据FIFA公告持续更新。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">❓ 这个站点和FIFA官网有什么不同？</div>
+            <div class="a">FIFA官网是唯一官方渠道。我们只做信息整理和可视化呈现，不提供票务、直播或官方文件。</div>
+        </div>
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="bottom-link">
+        <p>想了解更多关于 <a href="https://hubsite-fifa2026.com">世界杯</a> 的赛程、球队和场馆信息？欢迎浏览 hubsite-fifa2026 的内容页面。</p>
+        <p class="footnote">所有数据仅供个人参考 · 最终信息以国际足联(FIFA)公布为准</p>
+        <p class="footnote" style="margin-top:6px;">© 2026 信息页 · 非官方 · 无商业用途</p>
+    </div>
+
+</div>
+</body>
+</html>
